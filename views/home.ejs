@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surtidor Andino SRL</title>
+  <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    header {
+      background-color: #0d6efd;
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    .sidebar {
+      width: 240px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      background-color: #343a40;
+      padding-top: 60px;
+    }
+
+    .sidebar a {
+      display: block;
+      color: white;
+      padding: 1rem;
+      text-decoration: none;
+      border-bottom: 1px solid #495057;
+    }
+
+    .sidebar a:hover {
+      background-color: #495057;
+    }
+
+    .content {
+      margin-left: 240px;
+      padding: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+      }
+
+      .content {
+        margin-left: 0;
+      }
+    }
+
+    .surtidor-img {
+      max-height: 300px;
+      object-fit: cover;
+      border-radius: 0.5rem;
+      margin-bottom: 2rem;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="text-white text-uppercase px-3 mb-2 fw-bold">Ventas</div>
+    <a href="/reporte/litros-vendidos">Reporte de Combustibles</a>
+    <a href="/reporte/ingresos-producto">Reporte de Productos</a>
+    <a href="/reporte/ventas-sucursal-empleado">Reporte de Ventas</a>
+
+    <div class="text-white text-uppercase px-3 mt-4 mb-2 fw-bold">Cargas</div>
+    <a href="/reporte/facturas-pendientes">Reporte Facturas</a>
+    <a href="/reporte/detalle-recargas">Reporte Recargas</a>
+    <a href="/reporte/estado-factura">Reporte estado Factura</a>
+
+    <div class="text-white text-uppercase px-3 mt-4 mb-2 fw-bold">Abastecimiento</div>
+    <a href="/reporte/abastecimiento-detalle">Reporte Abastecimiento</a>
+  </div>
+
+  <!-- Contenido principal -->
+  <div class="content">
+    <header>
+      <h1>Surtidor Andino SRL</h1>
+      <p class="lead">Estaciones de servicio en La Paz, Bolivia</p>
+    </header>
+
+    <!-- Imagen de surtidor -->
+    <div class="row justify-content-center">
+      <div class="col-md-auto">
+        <img src="https://www.ypfb.gob.bo/images/2025/WhatsApp_Image_2025-04-15_at_25051_PM.jpeg"
+          alt="Surtidor de gasolina" class="img-fluid surtidor-img shadow">
+      </div>
+
+      <!-- Descripción -->
+      <div class="container mb-5">
+        <div class="row justify-content-center">
+          <div class="col-lg-10">
+            <div class="card shadow-sm">
+              <div class="card-body">
+                <p>
+                  <strong>Surtidor Andino SRL</strong> es una empresa boliviana ubicada en la ciudad de La Paz, que
+                  opera
+                  tres estaciones
+                  de servicio ubicadas en la zona Sur, Achachicala y El Alto. Su actividad principal es la venta de
+                  combustibles
+                  (gasolina especial, gasolina premium, diésel y GNV), así como aceites, lubricantes, aditivos, y
+                  servicios menores
+                  de mantenimiento vehicular.
+                </p>
+                <p>
+                  El surtidor también atiende a empresas y flotas de transporte público mediante convenios, ofreciendo
+                  facturación mensual.
+                  Actualmente enfrenta una mayor demanda, mayor control regulatorio, y dificultades para mantener una
+                  gestión eficiente
+                  en tiempo real, por lo que necesita implementar un sistema informático que automatice y centralice su
+                  operación.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+</body>
+
+</html>
