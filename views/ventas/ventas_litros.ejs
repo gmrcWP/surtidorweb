@@ -1,0 +1,64 @@
+<% layout("index") %>
+
+  <h1 class="mb-4">LITROS VENDIDOS</h1>
+
+  <!-- Formulario -->
+  <form class="row align-items-end g-3 mb-4" method="GET" action="/reporte/litros-vendidos">
+    <div class="col-md-4">
+      <label for="tipoCombustible" class="form-label">Tipo de Combustible</label>
+      <select name="tipoCombustible" class="form-select" id="tipoCombustible">
+        <option selected>Seleccionar...</option>
+        <option value="Gasolina Especial">Gasolina Especial</option>
+        <option value="Gasolina Premium">Gasolina Premium</option>
+        <option value="Diesel">Diesel</option>
+        <option value="GNV">GNV</option>
+      </select>
+    </div>
+
+    <div class="col-md-4">
+      <label for="turno" class="form-label">Turno</label>
+      <select name="tipoTurno" class="form-select" id="turno">
+        <option selected>Seleccionar...</option>
+        <option value="Mañana">Mañana</option>
+        <option value="Tarde">Tarde</option>
+        <option value="Noche">Noche</option>
+      </select>
+    </div>
+
+    <div class="col-md-4">
+      <button type="submit" class="btn btn-success w-100">Buscar</button>
+    </div>
+  </form>
+
+  <!-- Tabla de resultados -->
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered">
+      <thead class="table-dark">
+        <tr>
+          <th>Tipo Producto</th>
+          <th>Tipo Combustible</th>
+          <th>Turno</th>
+          <th>Litros Vendidos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (!ventaLitros || ventaLitros.length===0) { %>
+          <tr class="table-warning">
+            <td colspan="4" class="text-center fw-bold py-3">
+              🚫 No hay ventas registradas
+            </td>
+          </tr>
+          <% } else { %>
+            <% ventaLitros.forEach(item=> { %>
+              <tr>
+                <td><%- item.tipo %></td>
+                <td><%- item.combustible %></td>
+                <td><%- item.turno %></td>
+                <td><%- item.litros_vendidos %></td>
+              </tr>
+              <% }); %>
+                <% } %>
+      </tbody>
+    </table>
+
+  </div>
