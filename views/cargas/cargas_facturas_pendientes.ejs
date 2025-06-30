@@ -1,0 +1,40 @@
+<% layout("index") %>
+
+  <h2 class="mb-4">FACTURAS PENDIENTES</h2>
+
+  <form class="row align-items-end g-3 mb-4" method="GET" action="/reporte/facturas-pendientes">
+    <div class="col-md-2">
+      <button type="submit" class="btn btn-success w-100">Generar</button>
+    </div>
+  </form>
+
+  <div class="table-responsive mb-5">
+    <table class="table table-striped table-bordered">
+      <thead class="table-dark">
+        <tr>
+          <th>Nombre</th>
+          <th>Nit</th>
+          <th># Facturas</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (!facturas || facturas.length===0) { %>
+          <tr class="table-warning">
+            <td colspan="4" class="text-center fw-bold py-3">
+              🚫 No Existen registros
+            </td>
+          </tr>
+          <% } else { %>
+            <% facturas.forEach(item=> { %>
+              <tr>
+                <td><%- item.nombre %></td>
+                <td><%- item.nit %></td>
+                <td><%- item.cantidad_facturas %></td>
+                <td><%- item.monto_total %></td>
+              </tr>
+              <% }); %>
+                <% } %>
+      </tbody>
+    </table>
+  </div>

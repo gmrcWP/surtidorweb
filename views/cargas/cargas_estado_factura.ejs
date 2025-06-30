@@ -1,0 +1,69 @@
+<% layout("index") %>
+
+  <h2 class="mb-4">ESTADO FACTURA</h2>
+
+  <form class="row align-items-end g-3 mb-4" method="GET" action="/reporte/estado-factura">
+    <div class="col-md-4">
+      <label for="estado" class="form-label">Placa del Vehiculo</label>
+      <select name="estadoFactura" class="form-select" id="estado">
+        <option selected value="">Todos...</option>
+        <option value="Pendiente">Pendiente</option>
+        <option value="Emitida">Emitida</option>
+        <option value="Anulada">Anulada</option>
+      </select>
+    </div>
+
+    <div class="col-md-3">
+      <label for="fechaInicio" class="form-label">Fecha Inicio</label>
+      <input type="date" class="form-control" name="fechaInicio" id="fechaInicio">
+    </div>
+
+    <div class="col-md-3">
+      <label for="fechaFin" class="form-label">Fecha Fin</label>
+      <input type="date" class="form-control" name="fechaFin" id="fechaFin">
+    </div>
+
+    <div class="col-md-2">
+      <button type="submit" class="btn btn-success w-100">Buscar</button>
+    </div>
+  </form>
+
+  <div class="table-responsive mb-5">
+    <table class="table table-striped table-bordered">
+      <thead class="table-dark">
+        <tr>
+          <th>Empresa</th>
+          <th>Nit</th>
+          <th>Placa</th>
+          <th>Producto</th>
+          <th>Cantidad</th>
+          <th>Fecha</th>
+          <th>Estado</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (!estado || estado.length===0) { %>
+          <tr class="table-warning">
+            <td colspan="8" class="text-center fw-bold py-3">
+              🚫 No Existen registros
+            </td>
+          </tr>
+          <% } else { %>
+            <% estado.forEach(item=> { %>
+              <tr>
+                <td><%- item.empresa %></td>
+                <td><%- item.nit %></td>
+                <td><%- item.placa %></td>
+                <td><%- item.producto %></td>
+                <td><%- item.cantidad %></td>
+                <td><%- item.fecha_hora %></td>
+                <td><%- item.estado %></td>
+                <td><%- item.monto_total %></td>
+              </tr>
+              <% }); %>
+                <% } %>
+                  </tr>
+      </tbody>
+    </table>
+  </div>
