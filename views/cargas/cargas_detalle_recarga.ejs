@@ -1,0 +1,69 @@
+<% layout("index") %>
+
+  <h2 class="mb-4">DETALLE RECARGA</h2>
+
+  <form class="row align-items-end g-3 mb-4" method="GET" action="/reporte/detalle-recargas">
+    <div class="col-md-4">
+      <label for="placa" class="form-label">Placa del Vehiculo</label>
+      <select name="placaVehiculo" class="form-select" id="placa">
+        <option selected value="">Todos...</option>
+        <option value="J 7957 VA">J 7957 VA</option>
+        <option value="S 4148 EF">S 4148 EF</option>
+        <option value="2950 TJC">2950 TJC</option>
+        <option value="2216 RXW">2216 RXW</option>
+        <option value="3952 KZX">3952 KZX</option>
+        <option value="C 7628 OZ">C 7628 OZ</option>
+        <option value="CO 7240 IO">CO 7240 IO</option>
+      </select>
+    </div>
+
+    <div class="col-md-3">
+      <label for="fechaInicio" class="form-label">Fecha Inicio</label>
+      <input type="date" class="form-control" name="fechaInicio" id="fechaInicio">
+    </div>
+
+    <div class="col-md-3">
+      <label for="fechaFin" class="form-label">Fecha Fin</label>
+      <input type="date" class="form-control" name="fechaFin" id="fechaFin">
+    </div>
+
+    <div class="col-md-2">
+      <button type="submit" class="btn btn-success w-100">Buscar</button>
+    </div>
+  </form>
+
+  <div class="table-responsive mb-5">
+    <table class="table table-striped table-bordered">
+      <thead class="table-dark">
+        <tr>
+          <th>Cliente</th>
+          <th>Placa</th>
+          <th>Producto</th>
+          <th>Cantidad</th>
+          <th>Fecha</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (!detalle || detalle.length===0) { %>
+          <tr class="table-warning">
+            <td colspan="6" class="text-center fw-bold py-3">
+              🚫 No Existen registros
+            </td>
+          </tr>
+          <% } else { %>
+            <% detalle.forEach(item=> { %>
+              <tr>
+                <td><%- item.cliente %></td>
+                <td><%- item.placa %></td>
+                <td><%- item.producto %></td>
+                <td><%- item.cantidad %></td>
+                <td><%- item.fecha_hora %></td>
+                <td><%- item.monto_total %></td>
+              </tr>
+              <% }); %>
+                <% } %>
+                  </tr>
+      </tbody>
+    </table>
+  </div>

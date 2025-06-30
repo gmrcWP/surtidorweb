@@ -1,0 +1,68 @@
+<% layout("index") %>
+
+  <h2 class="mb-4">VENTAS POR SUCURSAL Y EMPLEADO</h2>
+
+  <form class="row align-items-end g-3 mb-4" method="GET" action="/reporte/ventas-sucursal-empleado">
+    <div class="col-md-5">
+      <label for="sucursal" class="form-label">Nombre de Sucursal</label>
+      <select name="nombreSucursal" class="form-select" id="sucursal">
+        <option selected value="">Todos...</option>
+        <option value="Sucursal Achachicala">Sucursal Achachicala</option>
+        <option value="Sucursal El Alto">Sucursal El Alto</option>
+        <option value="Sucursal Zona Sur">Sucursal Zona Sur</option>
+      </select>
+    </div>
+
+    <div class="col-md-5">
+      <label for="empleado" class="form-label">Nombre de Empleado</label>
+      <select name="nombreEmpleado" class="form-select" id="empleado">
+        <option selected value="">Todos...</option>
+        <option value="Ariadna Sierra-Alcázar">Ariadna Sierra-Alcázar</option>
+        <option value="Iker Pons">Iker Pons</option>
+        <option value="Paulina Aparicio-Bustos">Paulina Aparicio-Bustos</option>
+        <option value="Arcelia Méndez Andrés">Arcelia Méndez Andrés</option>
+        <option value="Adelardo Ricardo Cañas Tamarit">Adelardo Ricardo Cañas Tamarit</option>
+        <option value="Pascual Clemente Ruano Nicolau">Pascual Clemente Ruano Nicolau</option>
+        <option value="Apolinar Calisto Galan Tudela">Apolinar Calisto Galan Tudela</option>
+        <option value="Jose Manuel Jerónimo Goicoechea Montenegro">Jose Manuel Jerónimo Goicoechea Montenegro</option>
+        <option value="Conrado Esteve Pelayo">Conrado Esteve Pelayo</option>
+        <option value="Filomena Lillo Mayo">Filomena Lillo Mayo</option>
+        <option value="Belen Jimenez-Pareja">Belen Jimenez-Pareja</option>
+        <option value="Maximiliano Cardona Mendez">Maximiliano Cardona Mendez</option>
+        <option value="Melania Pulido Barreda">Melania Pulido Barreda</option>
+      </select>
+    </div>
+
+    <div class="col-md-2">
+      <button type="submit" class="btn btn-success w-100">Buscar</button>
+    </div>
+  </form>
+
+  <div class="table-responsive mb-5">
+    <table class="table table-striped table-bordered">
+      <thead class="table-dark">
+        <tr>
+          <th>Sucursal</th>
+          <th>Empledo</th>
+          <th>Total ventas</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (!ventaSucursalEmpleado || ventaSucursalEmpleado.length===0) { %>
+          <tr class="table-warning">
+            <td colspan="4" class="text-center fw-bold py-3">
+              🚫 No hay ventas registradas
+            </td>
+          </tr>
+          <% } else { %>
+            <% ventaSucursalEmpleado.forEach(item=> { %>
+              <tr>
+                <td><%- item.sucursal %></td>
+                <td><%- item.empleado %></td>
+                <td><%- item.total_ventas %></td>
+              </tr>
+              <% }); %>
+                <% } %>
+      </tbody>
+    </table>
+  </div>

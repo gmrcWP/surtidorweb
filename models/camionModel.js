@@ -1,4 +1,4 @@
-const db = require("../config/db");
+/* const db = require("../config/db");
 
 exports.traerTodosLosCamiones = (callback) => {
   const consulta = "SELECT * FROM camion";
@@ -26,4 +26,4 @@ exports.obtenerPedidosPorCamion = (fechaInicio, fechaFin, callback) => {
 
     callback(null, resultado[0]);
   })
-};
+}; */

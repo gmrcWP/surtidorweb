@@ -1,0 +1,84 @@
+<% layout("index") %>
+
+  <h2 class="mb-4">DETALLE ABASTECIMIENTO</h2>
+
+  <form class="row align-items-end g-3 mb-4" method="GET" action="/reporte/abastecimiento-detalle">
+    <div class="col-md-3">
+      <label for="proveedor" class="form-label">Proveedor</label>
+      <select name="nombreProveedor" class="form-select" id="proveedor">
+        <option selected value="">Todos...</option>
+        <option value="Durán-Iriarte">Durán-Iriarte</option>
+        <option value="Terrón Ltd">Terrón Ltd</option>
+        <option value="Llobet Group">Llobet Group</option>
+        <option value="López-Arnal">López-Arnal</option>
+        <option value="Quevedo Ltd">Quevedo Ltd</option>
+        <option value="Soto, Castejón and Valentín">Soto, Castejón and Valentín</option>
+        <option value="Ramírez Group">Ramírez Group</option>
+        <option value="Sancho, Solano and Ramis">Sancho, Solano and Ramis</option>
+        <option value="Casal-Pedro">Casal-Pedro</option>
+        <option value="Naranjo, Tolosa and Villena">Naranjo, Tolosa and Villena</option>
+        <option value="Márquez LLC">Márquez LLC</option>
+        <option value="Méndez-Sedano">Méndez-Sedano</option>
+      </select>
+    </div>
+
+    <div class="col-md-3">
+      <label for="producto" class="form-label">Producto</label>
+      <select name="nombreProducto" class="form-select" id="producto">
+        <option selected value="">Todos...</option>
+        <option value="Gasolina Especial">Gasolina Especial</option>
+        <option value="Gasolina Premium">Gasolina Premium</option>
+        <option value="Diesel">Diesel</option>
+        <option value="GNV">GNV</option>
+      </select>
+    </div>
+
+    <div class="col-md-3">
+      <label for="fechaInicio" class="form-label">Fecha Inicio</label>
+      <input type="date" class="form-control" name="fechaInicio" id="fechaInicio">
+    </div>
+
+    <div class="col-md-3">
+      <label for="fechaFin" class="form-label">Fecha Fin</label>
+      <input type="date" class="form-control" name="fechaFin" id="fechaFin">
+    </div>
+
+    <div class="col-md-2">
+      <button type="submit" class="btn btn-success w-100">Buscar</button>
+    </div>
+  </form>
+
+  <div class="table-responsive mb-5">
+    <table class="table table-striped table-bordered">
+      <thead class="table-dark">
+        <tr>
+          <th>Id tanque</th>
+          <th>Proveedor</th>
+          <th>Ultima recarga</th>
+          <th>Producto</th>
+          <th>Nivel Actual</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (!detalle || detalle.length===0) { %>
+          <tr class="table-warning">
+            <td colspan="8" class="text-center fw-bold py-3">
+              🚫 No Existen registros
+            </td>
+          </tr>
+          <% } else { %>
+            <% detalle.forEach(item=> { %>
+              <tr class="<%= item.nivel_actual < 1000 ? 'table-danger' : '' %>">
+                <td><%- item.id_tanque %></td>
+                <td><%- item.proveedor %></td>
+                <td><%- item.ultima_recarga %></td>
+                <td><%- item.producto %></td>
+                <td><%- item.nivel_actual %></td>
+
+              </tr>
+              <% }); %>
+                <% } %>
+                  </tr>
+      </tbody>
+    </table>
+  </div>

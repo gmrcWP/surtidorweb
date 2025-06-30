@@ -1,4 +1,4 @@
-const camionModel = require("../models/camionModel");
+/* const camionModel = require("../models/camionModel");
 
 exports.traerCamiones = (req, res) => {
   camionModel.traerTodosLosCamiones((err, camion) => {
@@ -31,4 +31,4 @@ exports.reportePedidosPorCamion = (req, res) => {
     console.log(camion);
     res.render("camion/pedidosPorCamion", { pedidos: camion })
   })
-};
+}; */
