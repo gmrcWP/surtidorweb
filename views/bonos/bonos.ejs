@@ -45,7 +45,7 @@
     </form>
 
     <table class="table table-bordered">
-        <thead>
+        <thead class="table-dark">
             <tr>
             <th>Nombre</th>
             <th>Fecha</th>
@@ -55,7 +55,7 @@
         </thead>
         <tbody>
         <% bonificaciones.forEach(bono => { %>
-        <tr>
+        <tr class="table-warning">
             <td><%- bono.nombre %></td>
             <td><%= new Date(bono.fecha).toISOString().split('T')[0] %></td>
             <td><%- bono.monto_bonificacion %></td>
@@ -96,7 +96,7 @@
     </form>
 
     <table class="table table-bordered">
-        <thead>
+        <thead class="table-dark">
             <tr>
                 <th>Nombre</th>
                 <th>litros vendidos</th>
@@ -106,7 +106,7 @@
         </thead>
         <tbody>
         <% bonificacionLitros.forEach(bonoLitro => { %>
-        <tr>
+        <tr class="table-warning">
             <td><%- bonoLitro.nombre %></td>
             <td><%- bonoLitro.litros_vendidos %></td>
             <td><%- bonoLitro.monto_bonificacion %></td>
@@ -129,7 +129,7 @@
     <h2>Turnos trabajados</h2>
 
     <table class="table table-bordered">
-        <thead>
+        <thead class="table-dark">
             <tr>
                 <th>Nombre</th>
                 <th>cantidad de turnos</th>
@@ -137,7 +137,7 @@
         </thead>
         <tbody>
         <% turnos.forEach(turno => { %>
-        <tr>
+        <tr class="table-warning">
             <td><%- turno.nombre %></td>
             <td><%- turno.cantidad_turnos %></td>
         </tr>
