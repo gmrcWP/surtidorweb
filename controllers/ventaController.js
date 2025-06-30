@@ -41,6 +41,54 @@ exports.reporteIngresosPorSurtidor = (req, res) => {
   })
 };
 
+
+// COMISIONES POR PERSONAL
+exports.reporteComisionPersonal = (req, res) => {
+  let { fechaInicio, fechaFin, idEmpleado } = req.query;
+
+  fechaInicio = fechaInicio || '2025-01-01';
+  fechaFin = fechaFin || '2025-12-31';
+  idEmpleado = idEmpleado || 0;
+
+  ventaModel.listarEmpleados((errEmpleados, empleados) => {
+    if (errEmpleados) {
+      console.log(errEmpleados);
+      return res.status(500).send("Error al obtener empleados");
+    }
+
+    ventaModel.bonificacionEmpleado( fechaInicio, fechaFin, idEmpleado, (err1, bonificacion) => {
+      if (err1) {
+        console.log(err1);
+      }
+
+      ventaModel.bonificacionLitros( fechaInicio, fechaFin, (err2, bonificacionLitros) => {
+          if (err2) {
+              console.log(err2);
+          }
+
+          ventaModel.turnosTrabajados( (err3, turnos) => {
+              if (err3) {
+                  console.log(err3);
+              }
+
+              console.log(empleados)
+              console.log(bonificacion);
+              res.render("bonos/bonos", { 
+                  bonificaciones: bonificacion,
+                  fechaInicio: fechaInicio,
+                  fechaFin: fechaFin,
+                  empleados: empleados,
+                  idEmpleado: idEmpleado,
+                  bonificacionLitros: bonificacionLitros,
+                  turnos: turnos,
+              })
+          })
+      })
+    
+    })
+  })
+};
+
 // exports.reportePedidosPorCamion = (req, res) => {
 //   const { fechaInicio, fechaFin } = req.query;
 //   camionModel.obtenerPedidosPorCamion(fechaInicio, fechaFin, (err, camion) => {
