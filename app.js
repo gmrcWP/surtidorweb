@@ -14,6 +14,10 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use("/bootstrap", express.static(path.join(__dirname, "node_modules/bootstrap/dist")));
 
+app.get("/", (req, res) => {
+  res.render("home"); // Asegúrate de tener views/index.ejs
+});
+
 app.use("/", ventaRoute);
 //app.use("/", camionRoute);
 app.use("/", ventasRoute);
